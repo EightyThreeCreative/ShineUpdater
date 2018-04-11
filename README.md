@@ -1,4 +1,4 @@
-# Shine
+# Shine ![Pod Version](https://img.shields.io/cocoapods/v/ShineUpdater.svg?style=flat) ![Pod Platform](https://img.shields.io/cocoapods/p/ShineUpdater.svg?style=flat) ![Pod License](https://img.shields.io/cocoapods/l/ShineUpdater.svg?style=flat) [![CocoaPods compatible](https://img.shields.io/badge/CocoaPods-compatible-green.svg?style=flat)](https://cocoapods.org)
 An Enterprise app update framework for iOS written in Swift
 
 <img src="example.png" width="33%"> <img src="required.png" width="33%"> <img src="nonotes.png" width="33%">
