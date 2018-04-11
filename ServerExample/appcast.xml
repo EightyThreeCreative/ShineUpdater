@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:shine="http://www.eightythreecreative.com/shinens" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>Initial Release</title>
+        <description>Most recent changes with links to updates.</description>
+        <language>en</language>
+        <item>
+            <title>Version 1.0</title>
+            <description><![CDATA[• Initial release]]></description>
+            <pubDate>Tue, 10 April 2018 10:01:11 -0600</pubDate>
+            <enclosure url="https://www.supergoodapp.com/app/1.0/manifest.plist"
+                       sparkle:version="25"
+                       sparkle:shortVersionString="1.0" />
+            <sparkle:minimumSystemVersion>10.3</sparkle:minimumSystemVersion>
+        </item>
+        <item>
+            <title>Version 2.0</title>
+            <description><![CDATA[• Some great new feature
+• Another feature
+• A third awesome feature]]></description>
+            <pubDate>Tue, 11 April 2018 10:01:11 -0600</pubDate>
+            <enclosure url="https://www.supergoodapp.com/app/2.0/manifest.plist"
+                       sparkle:version="40"
+                       sparkle:shortVersionString="2.0" />
+            <sparkle:minimumSystemVersion>10.3</sparkle:minimumSystemVersion>
+            <shine:forcedUpdate />
+        </item>
+    </channel>
+</rss>
