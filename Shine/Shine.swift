@@ -217,7 +217,7 @@ public class Shine: NSObject {
 		let bundleDisplayname = infoDictionary["CFBundleName"] as? String
 		
 		var releaseNotes = ""
-		if let content = toVersion.releaseNotesHTML, self.config.showReleaseNotes {
+		if let content = toVersion.releaseNotes, self.config.showReleaseNotes {
 			releaseNotes = "\n\nRelease Notes:\n\n\(content)"
 		}
 		
@@ -258,7 +258,7 @@ public class Shine: NSObject {
 
 fileprivate struct AppCastItem: XMLIndexerDeserializable {
 	let title: String?
-	let releaseNotesHTML: String?
+	let releaseNotes: String?
 	let pubDate: Date
 	let versionCode: String
 	let displayVersion: String?
@@ -272,7 +272,7 @@ fileprivate struct AppCastItem: XMLIndexerDeserializable {
 		}
 		
 		return try AppCastItem(title: element["title"].value(),
-						   releaseNotesHTML: element["description"].value(),
+						   releaseNotes: element["description"].value(),
 						   pubDate: element["pubDate"].value(),
 						   versionCode: element["enclosure"].value(ofAttribute: "sparkle:version"),
 						   displayVersion: element["enclosure"].value(ofAttribute: "sparkle:shortVersionString"),
