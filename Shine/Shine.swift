@@ -98,9 +98,9 @@ fileprivate extension Shine {
 	/// Master setup method, must be called with a config block to get everything running
 	///
 	/// - Parameter configClosure: Set config values in this block
-	@objc public func setup(_ configClosure: (inout ShineConfig) -> Void) {
+	@objc public func setup(_ configClosure: (ShineConfig) -> Void) {
 		var defaultConfig = ShineConfig()
-		configClosure(&defaultConfig)
+		configClosure(defaultConfig)
 		defaultConfig.validate()
 		self.config = defaultConfig
 		
