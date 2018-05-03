@@ -66,25 +66,27 @@ fileprivate extension Shine {
 	}
 }
 
-public class Shine: NSObject {
-	public struct ShineConfig {
-		public var automaticallyChecksForUpdates = true
-		public var updateCheckInterval: TimeInterval = 3600 // 1 hour
-		public var remindLaterInterval: TimeInterval = 3600 * 24 // 1 day
-		public var feedURL = URL(string: "http://notset.com")!
-		public var showReleaseNotes = true
-		
-		fileprivate func validate() {
-			assert(feedURL.absoluteString != "http://notset.com", "Shine: Must set feedURL in config")
-			assert(feedURL.scheme?.lowercased() == "https" || feedURL.absoluteString.contains("localhost"), "Shine: feedURL must be an HTTPS URL")
-		}
-	}
+@objc public class Shine: NSObject {
+	
+    @objc public class ShineConfig: NSObject {
+        
+        @objc public var automaticallyChecksForUpdates = true
+        @objc public var updateCheckInterval: TimeInterval = 3600 // 1 hour
+        @objc public var remindLaterInterval: TimeInterval = 3600 * 24 // 1 day
+        @objc public var feedURL = URL(string: "http://notset.com")!
+        @objc public var showReleaseNotes = true
+        
+        fileprivate func validate() {
+            assert(feedURL.absoluteString != "http://notset.com", "Shine: Must set feedURL in config")
+            assert(feedURL.scheme?.lowercased() == "https" || feedURL.absoluteString.contains("localhost"), "Shine: feedURL must be an HTTPS URL")
+        }
+    }
 	
 	// MARK: Singleton
-	public static let shared = Shine()
+	@objc public static let shared = Shine()
 	
 	// MARK: Public vars
-	public var config = ShineConfig()
+	@objc public var config = ShineConfig()
 	
 	// MARK: Private vars
 	private let xml = SWXMLHash.config { config in
@@ -96,7 +98,7 @@ public class Shine: NSObject {
 	/// Master setup method, must be called with a config block to get everything running
 	///
 	/// - Parameter configClosure: Set config values in this block
-	public func setup(_ configClosure: (inout ShineConfig) -> Void) {
+	@objc public func setup(_ configClosure: (inout ShineConfig) -> Void) {
 		var defaultConfig = ShineConfig()
 		configClosure(&defaultConfig)
 		defaultConfig.validate()
@@ -109,7 +111,7 @@ public class Shine: NSObject {
 	/// Trigger a manual update check by downloading the appcast.xml file and checking versions
 	///
 	/// - Parameter forceNotify: Set this to true if the user is doing something that calls this method. Will show the update dialog even in cases that it normally wouldn't be shown, like if the check interval hasn't passed yet or if the user ignored this update. It will also show a "no update available" dialog if there is no update to let the user know the check succeeded.
-	public func checkForUpdates(forceNotify: Bool = false) {
+	@objc public func checkForUpdates(forceNotify: Bool = false) {
 		self.config.validate()
 		
 		self.backgroundQueue.async {
