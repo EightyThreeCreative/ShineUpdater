@@ -66,27 +66,13 @@ fileprivate extension Shine {
 	}
 }
 
-@objc public class Shine: NSObject {
-	
-    @objc public class ShineConfig: NSObject {
-        
-        @objc public var automaticallyChecksForUpdates = true
-        @objc public var updateCheckInterval: TimeInterval = 3600 // 1 hour
-        @objc public var remindLaterInterval: TimeInterval = 3600 * 24 // 1 day
-        @objc public var feedURL = URL(string: "http://notset.com")!
-        @objc public var showReleaseNotes = true
-        
-        fileprivate func validate() {
-            assert(feedURL.absoluteString != "http://notset.com", "Shine: Must set feedURL in config")
-            assert(feedURL.scheme?.lowercased() == "https" || feedURL.absoluteString.contains("localhost"), "Shine: feedURL must be an HTTPS URL")
-        }
-    }
+@objcMembers public class Shine: NSObject {
 	
 	// MARK: Singleton
-	@objc public static let shared = Shine()
+	public static let shared = Shine()
 	
 	// MARK: Public vars
-	@objc public var config = ShineConfig()
+	public var config = ShineConfig()
 	
 	// MARK: Private vars
 	private let xml = SWXMLHash.config { config in
@@ -98,8 +84,8 @@ fileprivate extension Shine {
 	/// Master setup method, must be called with a config block to get everything running
 	///
 	/// - Parameter configClosure: Set config values in this block
-	@objc public func setup(_ configClosure: (ShineConfig) -> Void) {
-		var defaultConfig = ShineConfig()
+	public func setup(_ configClosure: (ShineConfig) -> Void) {
+		let defaultConfig = ShineConfig()
 		configClosure(defaultConfig)
 		defaultConfig.validate()
 		self.config = defaultConfig
@@ -111,7 +97,7 @@ fileprivate extension Shine {
 	/// Trigger a manual update check by downloading the appcast.xml file and checking versions
 	///
 	/// - Parameter forceNotify: Set this to true if the user is doing something that calls this method. Will show the update dialog even in cases that it normally wouldn't be shown, like if the check interval hasn't passed yet or if the user ignored this update. It will also show a "no update available" dialog if there is no update to let the user know the check succeeded.
-	@objc public func checkForUpdates(forceNotify: Bool = false) {
+	public func checkForUpdates(forceNotify: Bool = false) {
 		self.config.validate()
 		
 		self.backgroundQueue.async {
