@@ -10,6 +10,7 @@
 		982E0638207E4A770033B541 /* Shine.h in Headers */ = {isa = PBXBuildFile; fileRef = 982E0636207E4A770033B541 /* Shine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		982E063F207E4ADC0033B541 /* Shine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982E063E207E4ADC0033B541 /* Shine.swift */; };
 		D5AEEB11097397C008460071 /* Pods_Shine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 111995F85DE48A7131726AC5 /* Pods_Shine.framework */; };
+		F86ABE29209C929700048D9C /* ShineConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86ABE28209C929700048D9C /* ShineConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		982E0637207E4A770033B541 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		982E063E207E4ADC0033B541 /* Shine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shine.swift; sourceTree = "<group>"; };
 		CDBDA9A4F5038CBDE064B8AD /* Pods-Shine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shine/Pods-Shine.debug.xcconfig"; sourceTree = "<group>"; };
+		F86ABE28209C929700048D9C /* ShineConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShineConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				982E063E207E4ADC0033B541 /* Shine.swift */,
+				F86ABE28209C929700048D9C /* ShineConfig.swift */,
 				982E0641207E4AED0033B541 /* Supporting Files */,
 			);
 			path = Shine;
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				982E063F207E4ADC0033B541 /* Shine.swift in Sources */,
+				F86ABE29209C929700048D9C /* ShineConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +332,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Shine/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.eightythreecreative.shine;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -351,7 +359,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Shine/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.eightythreecreative.shine;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

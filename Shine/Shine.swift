@@ -66,19 +66,7 @@ fileprivate extension Shine {
 	}
 }
 
-public class Shine: NSObject {
-	public struct ShineConfig {
-		public var automaticallyChecksForUpdates = true
-		public var updateCheckInterval: TimeInterval = 3600 // 1 hour
-		public var remindLaterInterval: TimeInterval = 3600 * 24 // 1 day
-		public var feedURL = URL(string: "http://notset.com")!
-		public var showReleaseNotes = true
-		
-		fileprivate func validate() {
-			assert(feedURL.absoluteString != "http://notset.com", "Shine: Must set feedURL in config")
-			assert(feedURL.scheme?.lowercased() == "https" || feedURL.absoluteString.contains("localhost"), "Shine: feedURL must be an HTTPS URL")
-		}
-	}
+@objcMembers public class Shine: NSObject {
 	
 	// MARK: Singleton
 	public static let shared = Shine()
@@ -96,9 +84,9 @@ public class Shine: NSObject {
 	/// Master setup method, must be called with a config block to get everything running
 	///
 	/// - Parameter configClosure: Set config values in this block
-	public func setup(_ configClosure: (inout ShineConfig) -> Void) {
-		var defaultConfig = ShineConfig()
-		configClosure(&defaultConfig)
+	public func setup(_ configClosure: (ShineConfig) -> Void) {
+		let defaultConfig = ShineConfig()
+		configClosure(defaultConfig)
 		defaultConfig.validate()
 		self.config = defaultConfig
 		
