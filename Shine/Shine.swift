@@ -293,6 +293,7 @@ extension Date: XMLElementDeserializable, XMLAttributeDeserializable {
 	
 	private static func stringToDate(_ dateAsString: String) -> Date? {
 		let dateFormatter = DateFormatter()
+		dateFormatter.locale = Locale(identifier: "en_US")
 		dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss ZZZ"
 		return dateFormatter.date(from: dateAsString)
 	}
