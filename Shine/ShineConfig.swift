@@ -13,6 +13,7 @@ import Foundation
     public var automaticallyChecksForUpdates = true
     public var updateCheckInterval: TimeInterval = 3600 // 1 hour
     public var remindLaterInterval: TimeInterval = 3600 * 24 // 1 day
+	public var updateDialogDelay: TimeInterval = 0.0 // No delay
     public var feedURL = URL(string: "http://notset.com")!
     public var showReleaseNotes = true
     

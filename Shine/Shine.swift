@@ -177,14 +177,18 @@ fileprivate extension Shine {
 	// MARK: Internal notification methods
 	
 	@objc private func appDidResume() {
-		let timeSinceLastCheck = abs(self.lastCheckDate.timeIntervalSinceNow)
-		let beenLongEnoughToCheckAgain = timeSinceLastCheck > self.config.updateCheckInterval
-		
-		if self.lastCheckWasForcedUpdate || self.completedFirstCheck && self.config.automaticallyChecksForUpdates && beenLongEnoughToCheckAgain {
-			self.checkForUpdates()
+		DispatchQueue.main.asyncAfter(wallDeadline: .now() + self.config.updateDialogDelay) {
+			let timeSinceLastCheck = abs(self.lastCheckDate.timeIntervalSinceNow)
+			let beenLongEnoughToCheckAgain = timeSinceLastCheck > self.config.updateCheckInterval
+			
+			if self.lastCheckWasForcedUpdate || self.completedFirstCheck && self.config.automaticallyChecksForUpdates && beenLongEnoughToCheckAgain {
+				self.checkForUpdates()
+			} else if !beenLongEnoughToCheckAgain {
+				print("Shine: Too soon to check for update: (\(Int(timeSinceLastCheck)) seconds passed, \(self.config.updateCheckInterval) seconds between checks")
+			}
+			
+			self.completedFirstCheck = true
 		}
-		
-		self.completedFirstCheck = true
 	}
 	
 	// MARK: Internal methods
