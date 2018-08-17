@@ -77,6 +77,7 @@ Shine.shared.setup { config in
   config.remindLaterInterval = 3600               // Default: 86400 (1 day)
   config.automaticallyChecksForUpdates = false    // Default: true
   config.showReleaseNotes = false                 // Default: true
+  config.updateDialogDelay = 3.0                  // Default: 0 (no delay)
 }
 ```
 
@@ -87,6 +88,8 @@ Shine.shared.setup { config in
 `automaticallyChecksForUpdates`: Whether or not the app automatically checks for updates on launch. If this is changed to `false`, the app will only check for updates and notify when the `checkForUpdates()` func is called.
 
 `showReleaseNotes`: Whether or not to show release notes from the App Cast in the update dialog.
+
+`updateDialogDelay`: Adds a delay to the presentation of the update dialog on launch. Useful if the app UI takes a moment to load or if there is a splash screen to avoid.
 
 ## Version Numbers
 
