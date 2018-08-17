@@ -26,7 +26,7 @@ An Enterprise app update framework for iOS written in Swift
 [CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C and Swift, which automates and simplifies the process of using 3rd-party libraries in your projects. First, add the following line to your [Podfile](http://guides.cocoapods.org/using/using-cocoapods.html):
 
 ```ruby
-pod 'ShineUpdater', '~> 1.0'
+pod 'ShineUpdater', '~> 1.1.1'
 ```
 
 Second, install Shine into your project:
