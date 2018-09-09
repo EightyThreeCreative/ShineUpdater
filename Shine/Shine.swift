@@ -242,7 +242,7 @@ fileprivate extension Shine {
 			downloadTriggerURL = URL(string: "itms-services://?action=download-manifest&url=\(givenURL.absoluteString)")!
 		}
 		
-		UIApplication.shared.open(downloadTriggerURL, options: [:], completionHandler: nil)
+		UIApplication.shared.openURL(downloadTriggerURL)
 	}
 }
 
