@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ShineUpdater"
-  s.version      = "1.2.0"
+  s.version      = "1.2.1"
   s.summary      = "An Enterprise app update framework for iOS"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Cory Imdieke" => "cimdieke@eightythreecreative.com" }
