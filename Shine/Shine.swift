@@ -206,7 +206,7 @@ fileprivate extension Shine {
 			return
 		}
 		let displayVersion = infoDictionary["CFBundleShortVersionString"] as? String
-		let bundleDisplayname = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String
+		let bundleDisplayname = infoDictionary["CFBundleDisplayName"] as? String
 		
 		var releaseNotes = ""
 		if let content = toVersion.releaseNotes, self.config.showReleaseNotes {
