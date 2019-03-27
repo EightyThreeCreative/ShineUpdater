@@ -151,7 +151,7 @@ fileprivate extension Shine {
 						DispatchQueue.main.sync {
 							let infoDictionary = Bundle.main.infoDictionary!
 							let displayVersion = infoDictionary["CFBundleShortVersionString"] as? String
-							let bundleDisplayname = infoDictionary["CFBundleName"] as? String
+							let bundleDisplayname = infoDictionary["CFBundleDisplayName"] as? String
 							let noUpdateAlert = UIAlertController(title: "You’re up-to-date!", message: "\(bundleDisplayname ?? "Version") \(displayVersion ?? currentVersionCode) is currently the newest version available.", preferredStyle: .alert)
 							noUpdateAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
 							
@@ -206,7 +206,7 @@ fileprivate extension Shine {
 			return
 		}
 		let displayVersion = infoDictionary["CFBundleShortVersionString"] as? String
-		let bundleDisplayname = infoDictionary["CFBundleName"] as? String
+		let bundleDisplayname = infoDictionary["CFBundleDisplayName"] as? String
 		
 		var releaseNotes = ""
 		if let content = toVersion.releaseNotes, self.config.showReleaseNotes {
