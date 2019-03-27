@@ -16,6 +16,7 @@ import Foundation
 	public var updateDialogDelay: TimeInterval = 0.0 // No delay
     public var feedURL = URL(string: "http://notset.com")!
     public var showReleaseNotes = true
+	public var customDisplayName: String?
     
     public func validate() {
         assert(feedURL.absoluteString != "http://notset.com", "Shine: Must set feedURL in config")

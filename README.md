@@ -78,6 +78,7 @@ Shine.shared.setup { config in
   config.automaticallyChecksForUpdates = false    // Default: true
   config.showReleaseNotes = false                 // Default: true
   config.updateDialogDelay = 3.0                  // Default: 0 (no delay)
+  config.customDisplayName = "My Great App"       // Default: nil (use Bundle Display Name)
 }
 ```
 
@@ -90,6 +91,8 @@ Shine.shared.setup { config in
 `showReleaseNotes`: Whether or not to show release notes from the App Cast in the update dialog.
 
 `updateDialogDelay`: Adds a delay to the presentation of the update dialog on launch. Useful if the app UI takes a moment to load or if there is a splash screen to avoid.
+
+`customDisplayName`: Customize the app title used in the update dialog. This dialog uses the `CFBundleDisplayName` by default, but can be overridden if a shortened name is used for the Springboard.
 
 ## Version Numbers
 
