@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = "ShineUpdater"
-  s.version      = "1.2.1"
+  s.version      = "1.2.2"
   s.summary      = "An Enterprise app update framework for iOS"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Cory Imdieke" => "cimdieke@eightythreecreative.com" }
   s.homepage	 = "http://www.eightythreecreative.com"
-  
+
   s.source = { :git => 'https://github.com/EightyThreeCreative/ShineUpdater.git', :tag => s.version }
 
   s.platform = :ios
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.source_files = 'Shine/**/*.{swift}'
 
   s.ios.frameworks = 'UIKit', 'Foundation'
-  
+
   s.dependency 'SWXMLHash', '~> 4.6.0'
-  
+
 end
