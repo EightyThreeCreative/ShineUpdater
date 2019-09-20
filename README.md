@@ -16,7 +16,7 @@ An Enterprise app update framework for iOS written in Swift
 ## Requirements
 
 * Runtime: iOS 10 or greater
-* Build: Xcode 9.2+ & Swift 4+
+* Build: Xcode 9.2+ & Swift 5+
 * HTTPS server for serving updates to comply with App Transport Security and Enterprise Deployment requirements
 
 ## Installation
@@ -26,7 +26,7 @@ An Enterprise app update framework for iOS written in Swift
 [CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C and Swift, which automates and simplifies the process of using 3rd-party libraries in your projects. First, add the following line to your [Podfile](http://guides.cocoapods.org/using/using-cocoapods.html):
 
 ```ruby
-pod 'ShineUpdater', '~> 1.2.2'
+pod 'ShineUpdater', '~> 1.3'
 ```
 
 Second, install Shine into your project:
