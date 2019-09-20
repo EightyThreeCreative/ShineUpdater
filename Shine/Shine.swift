@@ -19,7 +19,7 @@ fileprivate extension Shine {
 		static let CompletedFirstCheck = "Shine:CompletedFirstCheck"
 	}
 	
-	fileprivate var lastCheckLatestVersion: String? {
+	var lastCheckLatestVersion: String? {
 		get {
 			return UserDefaults.standard.string(forKey: UserDefaultKeys.LastCheckVersion)
 		}
@@ -28,7 +28,7 @@ fileprivate extension Shine {
 			UserDefaults.standard.synchronize()
 		}
 	}
-	fileprivate var lastCheckDate: Date {
+	var lastCheckDate: Date {
 		get {
 			return UserDefaults.standard.object(forKey: UserDefaultKeys.LastCheckDate) as? Date ?? Date.distantPast
 		}
@@ -37,7 +37,7 @@ fileprivate extension Shine {
 			UserDefaults.standard.synchronize()
 		}
 	}
-	fileprivate var selectedRemindLaterDate: Date? {
+	var selectedRemindLaterDate: Date? {
 		get {
 			return UserDefaults.standard.object(forKey: UserDefaultKeys.UserRemindLaterDate) as? Date
 		}
@@ -46,7 +46,7 @@ fileprivate extension Shine {
 			UserDefaults.standard.synchronize()
 		}
 	}
-	fileprivate var lastCheckWasForcedUpdate: Bool {
+	var lastCheckWasForcedUpdate: Bool {
 		get {
 			return UserDefaults.standard.bool(forKey: UserDefaultKeys.LastCheckWasForcedUpdate)
 		}
@@ -55,7 +55,7 @@ fileprivate extension Shine {
 			UserDefaults.standard.synchronize()
 		}
 	}
-	fileprivate var completedFirstCheck: Bool {
+	var completedFirstCheck: Bool {
 		get {
 			return UserDefaults.standard.bool(forKey: UserDefaultKeys.CompletedFirstCheck)
 		}
@@ -90,7 +90,7 @@ fileprivate extension Shine {
 		defaultConfig.validate()
 		self.config = defaultConfig
 		
-		NotificationCenter.default.addObserver(self, selector: #selector(Shine.appDidResume), name: .UIApplicationDidBecomeActive, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(Shine.appDidResume), name: UIApplication.didBecomeActiveNotification, object: nil)
 	}
 	
 	
@@ -243,7 +243,7 @@ fileprivate extension Shine {
 		}
 		
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(downloadTriggerURL, options: [:], completionHandler: nil)
+            UIApplication.shared.open(downloadTriggerURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         } else {
             UIApplication.shared.openURL(downloadTriggerURL)
         }
@@ -355,4 +355,9 @@ fileprivate extension UIAlertController {
 	var messageLabel: UILabel? {
 		return self.labelViewArray(self.view)?[1] as? UILabel
 	}
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

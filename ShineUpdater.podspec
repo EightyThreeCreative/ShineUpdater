@@ -10,12 +10,12 @@ Pod::Spec.new do |s|
 
   s.platform = :ios
   s.ios.deployment_target = '9.3'
-  s.swift_version = '4.1'
+  s.swift_version = '5.0'
 
   s.source_files = 'Shine/**/*.{swift}'
 
   s.ios.frameworks = 'UIKit', 'Foundation'
 
-  s.dependency 'SWXMLHash', '~> 4.6.0'
+  s.dependency 'SWXMLHash', '~> 5.0'
 
 end
