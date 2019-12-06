@@ -155,9 +155,16 @@ fileprivate extension Shine {
 							let noUpdateAlert = UIAlertController(title: "You’re up-to-date!", message: "\(bundleDisplayname ?? "Version") \(displayVersion ?? currentVersionCode) is currently the newest version available.", preferredStyle: .alert)
 							noUpdateAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
 							
+							#if targetEnvironment(macCatalyst)
+							let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+							if let rootVC = keyWindow?.rootViewController {
+								noUpdateAlert.present(from: rootVC, animated: true, completion: nil)
+							}
+							#else
 							if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
 								noUpdateAlert.present(from: rootVC, animated: true, completion: nil)
 							}
+							#endif
 						}
 					}
 				}
@@ -228,12 +235,26 @@ fileprivate extension Shine {
 			self.beginUpdateProcess(toVersion: toVersion)
 		})
 		
+		#if targetEnvironment(macCatalyst)
+		let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+		if let rootVC = keyWindow?.rootViewController {
+			updateAlert.present(from: rootVC, animated: true, completion: nil)
+		}
+		#else
 		if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
 			updateAlert.present(from: rootVC, animated: true, completion: nil)
 		}
+		#endif
 	}
 	
 	private func beginUpdateProcess(toVersion: AppCastItem) {
+		#if targetEnvironment(macCatalyst)
+		UIApplication.shared.open(toVersion.appURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: { _ in
+			if toVersion.forcedUpdate {
+				abort()
+			}
+		})
+		#else
 		let downloadTriggerURL: URL
 		let givenURL = toVersion.appURL
 		if givenURL.scheme == "itms-services" {
@@ -247,6 +268,7 @@ fileprivate extension Shine {
         } else {
             UIApplication.shared.openURL(downloadTriggerURL)
         }
+		#endif
 	}
 }
 
