@@ -249,7 +249,7 @@ fileprivate extension Shine {
 	
 	private func beginUpdateProcess(toVersion: AppCastItem) {
 		#if targetEnvironment(macCatalyst)
-		UIApplication.shared.open(toVersion.appURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: { _ in
+		UIApplication.shared.open(toVersion.appURL, options: [:], completionHandler: { _ in
 			if toVersion.forcedUpdate {
 				abort()
 			}
@@ -264,7 +264,7 @@ fileprivate extension Shine {
 		}
 		
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(downloadTriggerURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+            UIApplication.shared.open(downloadTriggerURL, options: [:], completionHandler: nil)
         } else {
             UIApplication.shared.openURL(downloadTriggerURL)
         }
@@ -377,9 +377,4 @@ fileprivate extension UIAlertController {
 	var messageLabel: UILabel? {
 		return self.labelViewArray(self.view)?[1] as? UILabel
 	}
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }
